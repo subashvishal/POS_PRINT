@@ -1,0 +1,1432 @@
+<p-toast position="top-right" key="Auth-err" (onClose)="onAuthClose()"></p-toast>
+
+<div *ngIf="enableLogin">
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked/><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" /><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group" style="margin-top: 3vh;">
+                        <span class="p-float-label">
+                            <input class="p-col-12 p-md-12" id="codeInput" [(ngModel)]="UserName"
+                                (input)="onInputChange($event)" value={{value}} pInputText autofocus="true"/>
+                            <label for="inputtext">User ID</label>
+                        </span>
+                    </div>
+
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" [(ngModel)]="Password" (input)="onInputChange(value)"
+                                value="Password" (keyup.enter)="onLogin()" pInputText class="p-col-12 p-md-12">
+                            <label for="float-input">Password</label>
+                        </span>
+                    </div>
+
+                    <!-- <input pButton pRipple type="button" value="Print" (click)="print()" class="p-col-2 p-button-rounded p-button-success mahh" /> -->
+                    <!-- <input onclick="print()" type="button" value="printer test" /> -->
+                    <!-- <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                        <input id="check" type="checkbox" class="check" checked/>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </span>
+                    </div> -->
+
+                    <!-- <div>
+
+                        <form name>
+                            <p>List of printers:</p>
+
+                            <div id='list_printers'>
+
+                            </div>
+
+                            <br>
+
+                            <p>Width</p>
+                            <input type="radio" id="w1" name="width" value="140px">
+                            <label for="w1">140px</label><br>
+
+                            <input type="radio" id="w2" name="width" value="170px">
+                            <label for="w2">170px</label><br>
+
+                            <input type="radio" id="w3" name="width" value="200px">
+                            <label for="w3">200px</label><br>
+
+                            <input type="radio" id="w4" name="width" value="250px">
+                            <label for="w4">250px</label><br>
+
+                            <input type="radio" id="w5" name="width" value="300px">
+                            <label for="w5">300px</label><br>
+
+
+                        </form>
+
+                    </div>
+                    <br>
+                    <input id="printer" onclick="print()" type="button" value="printer test" />
+                    <button id="printer">
+                        Print Current Content of Page
+                       </button> -->
+                    <div class="group" style="margin-left: 17vh;">
+                        <div class="signIn" (click)="onLogin()" [disabled]="!UserName || !Password">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span> Sign In❤️
+                            <!-- <button class="logout-btn" (click)="onLogin()" [disabled]="!UserName || !Password">Sign In</button> -->
+                            <!-- <input type="submit" class="button" (click)="submit(user)" value="Sign In" (click)="onLogin()" [disabled]="!UserName || !Password" /> -->
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk" [disabled]=true>
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="codeInput" [(ngModel)]="UserID" (input)="onInputChange($event)" value={{value}}
+                                pInputText class="p-col-12 p-md-12" autofocus="true">
+                            <label for="inputtext">User ID</label>
+                        </span>
+                    </div>
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="codeInput" [(ngModel)]="User" (input)="onInputChange($event)" value={{value}}
+                                pInputText class="p-col-12 p-md-12">
+                            <label for="inputtext">User Name</label>
+                        </span>
+                    </div>
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" [(ngModel)]="Pass" (input)="onInputChange(value)"
+                                value="Pass" pInputText class="p-col-12 p-md-12">
+                            <label for="float-input">Password</label>
+                        </span>
+                    </div>
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" [(ngModel)]="CPassword" (input)="onInputChange(value)"
+                                value="CPassword" pInputText class="p-col-12 p-md-12">
+                            <label for="float-input">Confirm Password</label>
+                        </span>
+                    </div>
+                    <div class="group" style="margin-top: 4vh;">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" [(ngModel)]="Email" (input)="onInputChange(value)"
+                                value="Email" pInputText class="p-col-12 p-md-12">
+                            <label for="float-input">Email ID</label>
+                        </span>
+                    </div>
+                    <div class="group" style="margin-left: 18vh;">
+                        <div class="signIn" (click)="onRegister()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span> Register❤️
+                        </div>
+                    </div>
+                    <!-- <div class="group" style="margin-top: 3vh;">
+                            <input type="submit" class="button" value="Sign Up" (click)="onRegister()" />
+                        </div> -->
+                    <!-- <div class="hr">
+                    </div> -->
+                    <div class="foot-lnk">
+                        <label for="tab-1">Already Member?</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- // Home -->
+<div *ngIf="enableHome" class="p-col-12" style="background-color: ghostwhite;padding: 0px;height: 101vh;">
+    <div class="p-grid" style="width: 150vh;">
+        <div id="interactive" class="viewport">
+            <!-- QuaggaJS will populate this element -->
+        </div>
+        <p-toast position="top-right" key="t-err" (onClose)="onClose()"></p-toast>
+        <div class="p-col-5" style="background-color: ghostwhite; height: 53vh;padding: 0px 2px 0px 3px;">
+            <!-- <div class="box"> -->
+            <div class="p-fluid p-grid" style="margin-top: 2vh;">
+                <div class="p-field p-col-12 p-md-12" style="margin-bottom: auto;">
+                    <span class="p-float-label">
+                            <input id="codeInput" pInputText [(ngModel)]="Description"
+                                (keyup.enter)="onBarcodeDescription($event)" autofocus="true">
+                            <label for="inputtext">Enter Description</label>
+                        </span>
+                </div>
+            </div>
+            <div>
+                {{Desc}}
+            </div>
+
+            <div #scrollDiv id="scrollDiv" [scrollTop]="scrollDiv.scrollHeight" class="col-sm-6 card" style="height:41.5vh; background-color: white; overflow-y: auto;">
+                <!-- <p-scrollPanel [style]="{width: '100%', height:'50vh'}" styleClass="custombar1"> -->
+                <p-table #dt [value]="ItemData" [columns]="ItemColumn" selectionMode="single" [globalFilterFields]="['Description']" (onRowSelect)="onRowSelect($event)" [(selection)]="SelectedRowItem" dataKey="Sno" [loading]="loading" (onRowUnselect)="onRowUnselect($event)">
+                    <!-- <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1"> -->
+
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            <h5 class="p-m-0">Item Table</h5>
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                            <!-- <button pButton pRipple [label]="Clear" icon="pi pi-trash" class="p-button-warning" (click)="deleteSearchProducts()"></button> -->
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <!-- <ng-template pTemplate="header">
+                        <th pSortableColumn="Sno">Sno
+                            <p-sortIcon field="Sno"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Description" style="width: 24vh;">Item
+                            <p-sortIcon field="Description"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Quantity">Qty
+                            <p-sortIcon field="Quantity"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Price">Price
+                            <p-sortIcon field="Price"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Discount">Disc
+                            <p-sortIcon field="Discount"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Amount">Amt
+                            <p-sortIcon field="Amount"></p-sortIcon>
+                        </th>
+                    </ng-template> -->
+
+                    <ng-template pTemplate="header">
+                        <!-- <th>Sno</th> -->
+                        <th style="width: 24vh;">Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Disc</th>
+                        <th>Amt</th>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-response>
+                        <tr [pSelectableRow]="response">
+                            <!-- <td>{{response.Sno}}</td> -->
+                            <td style="font-size: x-small; font-weight: 700;">{{response.Description}}</td>
+                            <td>{{response.Quantity}}</td>
+                            <td>{{response.Price | currency:'GBP'}}</td>
+                            <td>{{response.Discount | currency:'GBP'}}</td>
+                            <td>{{response.Amount | currency:'GBP'}}</td>
+                            <!-- <td>
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(response)"></button>
+                            </td>
+                            <td>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(response)"></button>
+                            </td> -->
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <!-- </p-scrollPanel> -->
+            </div>
+        </div>
+
+        <div class="p-col-7" style="height: 54vh; padding: 0px;width: 87.5vh;">
+            <div class="p-grid" style="margin:-4vh 0vh;height: 57vh;">
+                <div class="p-col-12" style="height:58vh; padding: 16px 0px 0px 0px;">
+                    <p-tabView class="p-col-7" styleClass="tabview-custom">
+                        <p-tabPanel *ngIf="FunctionBack">
+                            <ng-template pTemplate="Back">
+                                <i class="pi pi-calendar"></i>
+                                <span>Back</span>
+                            </ng-template>
+                        </p-tabPanel>
+                        <p-tabPanel>
+                            <ng-template pTemplate="header">
+                                <i class="pi pi-calendar"></i>
+                                <span>Menu Card</span>
+                            </ng-template>
+                            <div style="height: 49vh" *ngIf="enableMain">
+                                <span *ngFor="let d of menuTitle; let i = index;">
+                        <!-- <input #inputValue style="padding: 0px;height: 6.5vh;width: 20vh;display: inline-grid;"
+                            [ngStyle]="{'background-color':d.Color}" pButton pRipple type="button"
+                            (click)="onSideMenuGet(d,'333bottom')" [ngValue]=d value={{d.Description}}
+                            class="p-shadow-10 p-mr-1 p-mb-1"> -->
+                            <!-- <button #inputValue pRipple class="CssButton" [ngStyle]="{'background-color':d.Color}" [ngValue]=d (click)="onSideMenuGet(d,'333bottom')">{{d.Description}}</button> -->
+                            <button #inputValue class="btn CssButton effect01" [ngStyle]="{'background-color':d.Color, 'border':d.Color, 'margin':auto}" [ngValue]=d (click)="onSideMenuGet(d,'333bottom')">{{d.Description}}</button>
+                                </span>
+                            </div>
+                        </p-tabPanel>
+
+
+
+
+                        <!-- //Function Buttons -->
+                        <p-tabPanel header="Happy Functions">
+                            <ng-template pTemplate="header">
+                                <i class="pi pi-user"></i>
+                                <span> Happy Function</span>
+                            </ng-template>
+                            <!-- <div class="col s12 m4 l12">
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(151, 32, 32);" (click)="onLogOut()">LOG OUT</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgba(58, 169, 36, 0.344);;" (click)="onReload()">Reload</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(151, 32, 32);;" (click)="onClearPermission()">Clear All</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(151, 32, 32);;" (click)="deleteProduct(SelectedRowItem)">Clear Line</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(19, 104, 11);" (click)="onTransList()">Sales List</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="LineDisc()">Line Disc</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="onCentDiscount()">100% Disc</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="TotalDisc()">Total Disc</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(255, 108, 9);" (click)="PriceCheck()">Check Item</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="onPetty()">Cash Pay</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="PayInstanceSales()">Pay Instance</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="FromLotterySales()">Lottery</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="AccPaySales()">Account Pay</button>
+                                <app-employee-detail></app-employee-detail>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" (click)="onSuspened()">Suspend</button>
+                                <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: green;" onclick="window.top.close()">Mini</button>
+                            </div> -->
+
+                            <!-- <div class="buttons11">
+                                <div class="container1">
+                                    <span>Hover</span>
+                                    <button pRipple class="p-col-2 mahh CssButtonFunc" style="background-color: rgb(151, 32, 32);" (click)="onLogOut()">LOG OUT</button>
+                                </div>
+                            </div> -->
+                            <div class="buttons">
+                                <div class="container">
+                                    <button class="btn effect01" (click)="onLogOut()"><span>LOG OUT</span></button>
+                                    <button class="btn effect01" (click)="onReload()"><span>Reload</span></button>
+                                    <button class="btn effect01" (click)="onClearPermission()"><span>Clear All</span></button>
+                                    <button class="btn effect01" (click)="deleteProduct(SelectedRowItem)"><span>Clear Line</span></button>
+                                    <button class="btn effect01" (click)="onTransList()"><span>Sales List</span></button>
+                                    <button class="btn effect01" (click)="LineDisc()"><span>Line Disc</span></button>
+                                    <button class="btn effect01" (click)="onCentDiscount()"><span>100% Disc</span></button>
+                                    <button class="btn effect01" (click)="TotalDisc()"><span>Total Disc</span></button>
+                                    <button class="btn effect01" (click)="PriceCheck()"><span>Check Item</span></button>
+                                    <button class="btn effect01" (click)="onPetty()"><span>Cash Pay</span></button>
+                                    <button class="btn effect01" (click)="PayInstanceSales()"><span>Pay-Instance</span></button>
+                                    <button class="btn effect01" (click)="FromLotterySales()"><span>Lottery</span></button>
+                                    <button class="btn effect01" (click)="AccPaySales()"><span>Account Pay</span></button>
+                                    <button class="btn effect01" (click)="onSuspened()"><span>Suspend</span></button>
+                                    <!-- <app-employee-detail></app-employee-detail> -->
+                                    <button class="btn effect01" onclick="printData()"><span>PrintSample</span></button>
+                                    <button class="btn effect01" onclick="window.top.minimize()"><span>Mini</span></button>
+                                </div>
+                            </div>
+                        </p-tabPanel>
+
+
+                        <!-- <p-tabPanel header="Sales Function">
+                            <ng-template pTemplate="header">
+                                <i class="pi pi-user"></i>
+                                <span>Sales Function</span>
+                            </ng-template>
+                            <div class="col s12 m4 l12">
+
+
+
+
+                            </div>
+                        </p-tabPanel> -->
+
+
+                        <p-tabPanel header="Functions">
+                            <ng-template pTemplate="header">
+                                <i class="pi pi-user"></i>
+                                <span>Suspened</span>
+                            </ng-template>
+                            <div class="col s12 m4 l12">
+                                <button class="btn effect01" (click)="onSusupenseClick()"><span>RETRIEVE SUSPENDED</span></button>
+                                <!-- <input pButton pRipple type="button" value="SUSPEND" (click)="onSuspened()" class="p-col-2 p-button-rounded p-button-warning mahh"> -->
+                                <!-- <input pButton pRipple type="button" value=" RETRIEVE SUSPENDED" (click)="onSusupenseClick()" class="p-col-4 p-button-rounded p-button-success mahh"> -->
+                            </div>
+                        </p-tabPanel>
+                    </p-tabView>
+                </div>
+                <!-- <div class="p-col-12">
+                    POS 1 {{clock}}
+                </div> -->
+            </div>
+        </div>
+
+        <div class="p-col-2 mahi">
+            <div class="box">
+                <div class="card horizontal storedesc mahi1">
+                    <div class="card-stacked">
+                        <!-- <a style="margin-left: auto;color: crimson;">25/05/2021 02:13:13</a> -->
+                        <div class="card-content mahi2">
+                            <p class="pFont">{{SalesMode}}<a style="float: right;">MINIMIZE</a></p>
+                            <p class="pFont1">POS SALES SOFTWARE</p>
+                            <p class="pFont1">SPICE OF ASIA</p>
+                            <p class="pFont1">54 JOHN STREET</p>
+                            <p class="pFont1">ABERDEEN AB25 1LL</p>
+                            <p class="pFont1">MON - SAT (9AM-9PM)</p>
+                            <p class="pFont1">SUNDAY (10AM-8PM)</p>
+                            <p class="pFont1">TELL - 01224645654</p>
+                            <p class="pFont1">Support - 9042931728</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-col-3 mahi">
+            <div class="box" style="border-left: 1px solid floralwhite;">
+                <div class="card horizontal mahi1">
+                    <div class="card-stacked">
+                        <div class="card-content mahi2">
+                            <p>TOTAL<a style="float: right;">£ {{Total}}</a></p>
+                            <p>DISC<a style="float: right;">£ {{TotalDiscount}}</a></p>
+                            <p>PAID<a style="float: right;">£ {{Paid}}</a></p>
+                            <p>CHANGE<a style="float: right;">£ {{ChangeAmount}}</a></p>
+                            <div class="p-col-12">
+                                POS 1 {{clock}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="p-col-7 padInherit">
+            <div class="buttons">
+                <span class="container">
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onExactAmount()" value="£ {{Total}}" mode="currency" currency="GBP" label=""><span>£ {{Total}}</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="7" label="7"><span>7</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="8" label="8"><span>8</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="9" label="9"><span>9</span></button>
+                </span>
+                <span class="container">
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onNearAmount()" value="£ {{NearTotal}}" mode="currency" currency="GBP" label=""><span>£ {{NearTotal}}</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="6" label="6"><span>6</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="5" label="5"><span>5</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="4" label="4"><span>4</span></button>
+                </span>
+                <span class="container">
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onNearAmount1()" value="£ {{NextNear}}" mode="currency" currency="GBP" label=""><span>£ {{NextNear}}</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="3" label="3"><span>3</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="2" label="2"><span>2</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="1" label="1"><span>1</span></button>
+                </span>
+                <span class="container">
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onNearAmount2()" value="£ {{LastTotal}}" mode="currency" currency="GBP" label=""><span>£ {{LastTotal}}</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="." label="."><span>.</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value="0" label="0"><span>0</span></button>
+                <button class="btn effect01" style="font-family: auto; font-size:x-large" (click)="onCalDesc($event)" value=".00" label=".00"><span>.00</span></button>
+                </span>
+                <span class="container">
+                    <button class="btn effect01" style="font-family: auto; font-size:x-large" value="CARD" (click)="onCard()" label="Card" style="width: 33.1vh;" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmountCash">
+                    <button class="btn effect01" style="font-family: auto; font-size:x-large" value="ENTER" (click)="onEnter()" label="Enter" style="background-color: rgb(52, 173, 123);" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmount">
+                    <button class="btn effect01" style="font-family: auto; font-size:x-large" value="CLEAR" (click)="onClearDesc()" label="Clear" style="background-color: rgb(246, 231, 23);" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmount">
+                    <button class="btn effect01" style="font-family: auto; font-size:x-large" value="CASH" (click)="onCash()" label="Cash" style="width: 33.2vh;" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmountCash">
+                </span>
+            </div>
+        </div> -->
+        <div class="p-col-7 padInherit">
+            <div class="mah">
+                <input pButton pRipple type="button" (click)="onExactAmount()" value="£ {{Total}}" mode="currency" currency="GBP" label="" class="p-col-2 p-mr-1 p-mb-1 amountButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="7" label="7" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="8" label="8" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="9" label="9" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+            </div>
+            <div class="mah">
+                <input pButton pRipple type="button" (click)="onNearAmount()" value="£ {{NearTotal}}" label="" class="p-col-2 p-row-2 p-mr-1 p-mb-1 amountButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="6" label="6" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="5" label="5" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="4" label="4" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+            </div>
+            <div class="mah">
+                <input pButton pRipple type="button" (click)="onNearAmount1()" value="£ {{NextNear}}" label="" class="p-col-2 p-row-2 p-mr-1 p-mb-1 amountButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="3" label="3" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="2" label="2" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="1" label="1" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+            </div>
+            <div class="mah">
+                <input pButton pRipple type="button" (click)="onNearAmount2()" value="£ {{LastTotal}}" label="" class="p-col-2 p-row-2 p-mr-1 p-mb-1 amountButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="." label="." class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value="0" label="0" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+                <input pButton pRipple type="button" (click)="onCalDesc($event)" value=".00" label=".00" class="p-col-2 p-row-2 p-mr-1 p-mb-1 calButton">
+            </div>
+            <!-- <div class="mah">
+                <input pButton pRipple type="button" value="CARD" (click)="onCard()" label="Card" style="width: 33.1vh;" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmountCash">
+                <input pButton pRipple type="button" value="ENTER" (click)="onEnter()" label="Enter" style="background-color: rgb(52, 173, 123);" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmount">
+                <input pButton pRipple type="button" value="CLEAR" (click)="onClearDesc()" label="Clear" style="background-color: rgb(246, 231, 23);" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmount">
+                <input pButton pRipple type="button" value="CASH" (click)="onCash()" label="Cash" style="width: 33.2vh;" class="p-col-2 p-row-2 p-mr-1 p-mb-1 cardAmountCash">
+            </div> -->
+            <span class="container">
+                <button class="btn effect01" style="font-family: auto; font-size:x-large;line-height: 77px;border: 1px solid darkcyan;background-color: red;" value="CARD" (click)="onCard()" label="Card"><span>Card</span></button>
+            <button class="btn effect01" style="font-family: auto; font-size:x-large;line-height: 77px;border: 1px solid darkcyan;background-color: green;" value="ENTER" (click)="onEnter()" label="Enter"><span>Enter</span></button>
+            <button class="btn effect01" style="font-family: auto; font-size:x-large;line-height: 77px;border: 1px solid darkcyan;" value="CLEAR" (click)="onClearDesc()" label="Clear"><span>Clear</span></button>
+            <button class="btn effect01" style="font-family: auto; font-size:x-large;line-height: 77px;border: 1px solid darkcyan;background-color: red;" value="CASH" (click)="onCash()" label="Cash"><span>Cash</span></button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- // Dialog Panel -->
+
+
+<!-- //on Grocery Cost -->
+<p-dialog header={{CostLabel}} [(visible)]="enableCost" [position]="position" [modal]="true" [style]="{width: '93vw'}" [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <div class="col-5">
+        <div>
+            <span *ngFor="let d of doubleCost1; let i = index;">
+                <input #inputValue
+                    style="font-size: larger;height: 8vh;width: fit-content;width: 25.5vh;display: inline-grid;"
+                    [ngStyle]="{'background-color':'firebrick'}" pButton type="button" [ngValue]=d value={{d}}
+                    (click)="onCost(d,'bottom')" class="p-col-1 p-mr-1 p-mb-1">
+            </span>
+        </div>
+        <div>
+            <span *ngFor="let d of doubleCost2; let i = index;">
+                <input #inputValue
+                    style="font-size: larger;height: 8vh;width: fit-content;width: 25.5vh;display: inline-grid;"
+                    [ngStyle]="{'background-color':'firebrick'}" pButton type="button" [ngValue]=d value={{d}}
+                    (click)="onCost(d,'bottom')" class="p-col-1 p-mr-1 p-mb-1">
+            </span>
+        </div>
+    </div>
+    <div class="p-fluid p-grid" style="margin-top: 1.5vh;">
+        <div class="p-field p-col-12 p-md-12">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">£</span>
+                <input type="number" pInputText placeholder="Entered Price" [(ngModel)]="Cost" (keyup.enter)="onEnterCost()" onfocus="true">
+            </div>
+        </div>
+    </div>
+
+    <button pButton type="button" label="Cancel" (click)="onCancel()" class="p-col-3 p-mr-4 p-mb-1 p-button-outlined"></button>
+    <button pButton type="button" label="Enter" (click)="onEnterCost()" class="p-col-5 p-mr-4 p-mb-1 p-button-outlined"></button>
+    <button pButton type="button" label="Clear" (click)="onClearCost()" class="p-col-3 p-mr-1 p-mb-1 p-button-outlined"></button>
+</p-dialog>
+
+
+<!-- Change Cash -->
+<p-dialog header="Change" [(visible)]="EnableChangeAmount">
+    <div class="product-list-item">
+        <!-- <img [src]="'../assets/images/Change.jpg" /> -->
+    </div>
+    Change : £ {{ChangeAmount}}
+</p-dialog>
+
+<!-- <p-dialog header="Change" [(visible)]="EnableChangeAmount">
+    <img [src]="'../assets/images/Change.jpg" class="product-image"> Change : £ {{ChangeAmount}}
+</p-dialog> -->
+
+
+
+<!-- Vendor -->
+<p-dialog header="Vendor List" [(visible)]="enableVendor" [modal]="true" [baseZIndex]="10000">
+    <p-table #vt [value]="vendorList" [columns]="vendorColumn" [paginator]="true" [responsive]="true" autoLayout="true" selectionMode="single" [loading]="loading" styleClass="p-datatable-striped" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" exportFilename="VENDOR_DATA">
+        <ng-template pTemplate="header" let-vendorColumn>
+            <tr style="text-align: center">
+                <th *ngFor="let col of vendorColumn">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-columns="columns" let-response>
+            <tr [pSelectableRow]="response" (dblclick)="onRowVendor($event, response)">
+                <td *ngFor="let col of columns" selectionMode="single">
+                    {{response[col.SlNo]}} {{response[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-dialog>
+
+
+
+<!-- Transaction List -->
+<p-dialog header="Sales Transaction List Data" [(visible)]="enableTrans" [modal]="true" [baseZIndex]="10000">
+    <!-- <div class="p-mb-3">
+        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()"
+            styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()"
+            styleClass="p-button-text"></p-button>
+   
+        </div> -->
+
+    <!-- <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1"> -->
+    <p-table #dt [value]="TransListData" [columns]="TransColumn" [paginator]="true" [responsive]="true" autoLayout="true" selectionMode="single" [loading]="loading" styleClass="p-datatable-striped" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" exportFilename="TRANACTION_DATA">
+        <ng-template pTemplate="header" let-TransColumn>
+            <tr style="text-align: center">
+                <th *ngFor="let col of TransColumn">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-columns="columns" let-response>
+            <tr [pSelectableRow]="response" (dblclick)="onRowTrans(response)">
+                <td *ngFor="let col of columns" selectionMode="single">
+                    {{response[col.SlNo]}} {{response[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- </p-scrollPanel> -->
+    <p-divider align="center">
+        <span class="p-tag">Item Description Based on Transaction Number</span>
+    </p-divider>
+    <!-- <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1"> -->
+    <p-table #dd [value]="TransSubListData" [columns]="SubTransColumn" [paginator]="true" [responsive]="true" [rows]="rows" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" exportFilename="POSTED_TRANACTION_DATA">
+        <ng-template pTemplate="header" let-SubTransColumn>
+            <tr style="text-align: center">
+                <th *ngFor="let col of SubTransColumn">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-columns="columns" let-res>
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{res[col.SlNo]}} {{res[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- </p-scrollPanel> -->
+</p-dialog>
+
+
+<!-- <p-dialog header="Sales Transaction List Data" [(visible)]="enableTrans" [modal]="true" [baseZIndex]="10000">
+    <p-table #dt [value]="TransListData" [columns]="TransColumn" [paginator]="true" [responsive]="true" autoLayout="true" selectionMode="single" [loading]="loading" styleClass="p-datatable-striped" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" exportFilename="TRANACTION_DATA">
+        <ng-template pTemplate="header" let-TransColumn>
+            <tr style="text-align: center">
+                <th *ngFor="let col of TransColumn">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-columns="columns" let-response>
+            <tr [pSelectableRow]="response" (dblclick)="onRowTrans(response)">
+                <td *ngFor="let col of columns" selectionMode="single">
+                    {{response[col.SlNo]}} {{response[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-divider align="center">
+        <span class="p-tag">Item Description Based on Transaction Number</span>
+    </p-divider>
+    <p-table #dd [value]="TransSubListData" [columns]="SubTransColumn" [paginator]="true" [responsive]="true" [rows]="rows" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" exportFilename="POSTED_TRANACTION_DATA">
+        <ng-template pTemplate="header" let-SubTransColumn>
+            <tr style="text-align: center">
+                <th *ngFor="let col of SubTransColumn">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-columns="columns" let-res>
+            {{res[col.field]}}
+        </ng-template>
+    </p-table>
+</p-dialog> -->
+
+
+
+<!-- Normal Login -->
+<p-dialog header="LOGIN TO CLEAR SALES" [(visible)]="enableClearPermission" [modal]="true" [baseZIndex]="10000">
+    <!-- <a (click)="onSignUp()">New User?</a> -->
+    <div class="p-col-12" style="background-color: ghostwhite;">
+        <div class="box">
+            <div class="p-fluid p-grid" style="margin-top: 3vh;">
+                <div class="p-col-2"></div>
+                <div class="p-field p-col-12 p-md-8">
+                    <span class="p-float-label">
+                        <input id="codeInput" [(ngModel)]="UserName"
+                            (input)="onInputChange($event)" value={{value}} pInputText autofocus="true"/>
+                        <label for="inputtext">User ID</label>
+                    </span>
+                </div>
+                <div class="p-col-2"></div>
+                <div class="p-col-2"></div>
+                <div class="p-field p-col-8 p-md-8">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" [(ngModel)]="Password" (input)="onInputChange(value)"
+                            value="Password" (keyup.enter)="onClearLogin()" pInputText>
+                        <label for="float-input">Password</label>
+                    </span>
+                </div>
+                <div class="p-col-2"></div>
+                <div class="p-col-4"></div>
+                <div class="p-field p-col-4 p-md-4">
+                    <!-- <button>Sign In</button> -->
+                    <button pButton type="button" label="Sign In" class="p-col-5 p-mr-4 p-mb-1 p-button-outlined" (click)="onClearLogin()" [disabled]="!UserName || !Password"></button>
+                </div>
+                <div class="p-col-4"></div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <!-- <input (input)="onInputChange($event)" class="input" value={{value}}
+            placeholder="Tap on the virtual keyboard to start" /> -->
+        <div class="simple-keyboard"></div>
+    </div>
+</p-dialog>
+
+
+
+<!-- //Normal SignUp -->
+<p-dialog header="CREATE NEW USER FOR SPICE OF ASIA" [(visible)]="enableSignUp">
+    <div class="p-col-12" style="background-color: ghostwhite;">
+        <div class="box">
+            <div class="p-fluid p-grid" style="margin-top: 3vh;">
+                <div class="p-col-1"></div>
+                <div class="p-field p-col-5 p-md-5">
+                    <span class="p-float-label">
+                        <input id="codeInput" [(ngModel)]="UserID" (input)="onInputChange($event)" value={{value}}
+                            pInputText autofocus="true">
+                        <label for="inputtext">User ID</label>
+                    </span>
+                </div>
+                <div class="p-field p-col-5 p-md-5">
+                    <span class="p-float-label">
+                        <input id="codeInput" [(ngModel)]="User" (input)="onInputChange($event)" value={{value}}
+                            pInputText>
+                        <label for="inputtext">User Name</label>
+                    </span>
+                </div>
+                <div class="p-col-1"></div>
+                <div class="p-col-1"></div>
+                <div class="p-field p-col-5 p-md-5">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" [(ngModel)]="Pass" (input)="onInputChange(value)"
+                            value="Pass" pInputText>
+                        <label for="float-input">Password</label>
+                    </span>
+                </div>
+                <div class="p-field p-col-5 p-md-5">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" [(ngModel)]="CPassword" (input)="onInputChange(value)"
+                            value="CPassword" pInputText>
+                        <label for="float-input">Confirm Password</label>
+                    </span>
+                </div>
+                <div class="p-col-1"></div>
+                <div class="p-col-2"></div>
+                <div class="p-field p-col-8 p-md-8">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" [(ngModel)]="Email" (input)="onInputChange(value)"
+                            value="Email" pInputText>
+                        <label for="float-input">Email ID</label>
+                    </span>
+                </div>
+                <div class="p-col-1"></div>
+                <div class="p-col-4"></div>
+                <div class="p-field p-col-4 p-md-4">
+                    <button pButton type="button" label="Register" class="p-col-5 p-mr-4 p-mb-1 p-button-outlined" [disabled]="!UserID || User || Pass || !CPassword" (click)="onRegister()"></button>
+                </div>
+                <div class="p-col-4"></div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <!-- <input (input)="onInputChange($event)" class="input" value={{value}}
+            placeholder="Tap on the virtual keyboard to start" /> -->
+        <div class="simple-keyboard"></div>
+    </div>
+</p-dialog>
+
+
+<!-- Side Item Menu -->
+<p-toast position="top-center" key="i-err" (onClose)="onSubItemClose()"></p-toast>
+<p-dialog header="Item Menu" [(visible)]="enableSide" [position]="position" [modal]="true" [style]="{width: '98vw',height: '100%'}" [closeOnEscape]="true" [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <!-- <span *ngFor="let d of menuTempTitle; let i = index">
+        <input #inputValue style="padding: 0px;height: 6.5vh;width: 32vh;display: inline-grid;"
+            [ngStyle]="{'background-color':d.Color}" (click)="onSubMenuItem(d)" pButton pRipple
+            type="button" [ngValue]=d value={{d.Description}} class="p-shadow-10 p-col-2 p-mr-1 p-mb-1">
+    </span> -->
+    <!-- <p-toast position="top-center" key="i-err" (onClose)="onSubItemClose()"></p-toast> -->
+
+    <div class="card">
+        <p-dataView #dv [value]="menuTempTitle" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" exportFilename="ITEM_SUB_DATA" [rows]="20" filterBy="Description" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+            <ng-template pTemplate="header">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                    <!-- <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Description" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown> -->
+                    <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                        <i class="pi pi-search"></i>
+                        <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+                    </span>
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </ng-template>
+
+            <ng-template let-product pTemplate="listItem">
+                <div class="p-col-12">
+                    <!-- <div class="product-list-item" [ngStyle]="{'background-color':product.Color}"> -->
+                    <div class="product-list-item">
+                        <img [src]="'./src/app/home/items/' + product.ImagePath" [alt]="product.Description" />
+                        <!-- <img [src]="'../electron-build/assets/items/' + product.ImagePath" [alt]="product.Description" /> -->
+                        <div class="product-list-detail">
+                            <div class="product-name">{{product.Description}}</div>
+                            <div class="product-description">{{product.Key_Value}}</div>
+                            <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.Menu_ID}}</span>
+                        </div>
+                        <div class="product-list-action">
+                            <!-- <span class="product-price">${{product.Key_ID}}</span> -->
+                            <p-button icon="pi pi-shopping-cart" label="Add to Cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                            <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.Key_ID}}</span> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template let-product pTemplate="gridItem">
+                <div class="p-col-12 p-md-4 cardFix" (click)="onSubMenuItem(product)">
+                    <div class="product-grid-item card cardImg">
+                        <!-- <img [src]="'./app/home/items/login-html.jpg'" [alt]="product.Description" /> -->
+                        <!-- <div class="product-grid-item card" [ngStyle]="{'background-color':product.Color}"> -->
+                        <!-- <div class="product-grid-item-top">
+                        </div> -->
+                        <div class="product-grid-item-bottom">
+                            <span class="product-category"><i class="pi pi-tag product-category-icon"></i> {{product.Menu_ID}}</span>
+                            <!-- <img [src]="'../assets/items/' + product.ImagePath" [alt]="product.Description" /> -->
+                            <!-- <p-button icon="pi pi-shopping-cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button> -->
+                            <div class="product-name">{{product.Description}} - {{product.Key_Value}}</div>
+                            <!-- <div class="product-descriptio4n">{{product.Key_Value}}</div> -->
+                        </div>
+                        <div class="product-grid-item-content">
+                            <!-- <div class="product-name">{{product.Description}}</div>
+                            <div class="product-descriptio4n">{{product.Key_Value}}</div> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</p-dialog>
+
+
+<!-- //Data View 
+ -->
+
+<!-- <p-dataView #dv [value]="menuTempTitle" [paginator]="true" [rows]="20" filterBy="Description" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+    <ng-template pTemplate="header">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+            <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Description" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+            <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                <i class="pi pi-search"></i>
+                <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+            </span>
+            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+    </ng-template>
+
+    BoColor: "-65408" Colour: "8388863" Description: "PILLSBURY ATTA(10KG)" Down_Path: "MyCom" ISImage: false ImagePath: null Key_Command: "0" Key_ID: 1 Key_Value: "23822" Menu_ID: "ATTA 10KG" RoleID: 2 Up_Path: "Rectangle" Color: "green" Colour: "65535"
+    Description: "YELLOW PLANTAIN" ID: 24 ImagePath: null Key_Command: "0" Key_ID: 1 Key_Value: "13248" Menu_ID: "VEG"
+
+    <ng-template let-product pTemplate="listItem">
+        <div class="p-col-12">
+            <div class="product-list-item" [ngStyle]="{'background-color':product.Color}">
+                <img [src]="'../assets/items/' + product.ImagePath" [alt]="product.Description" />
+                <div class="product-list-detail" style="color: white">
+                    <div class="product-name">{{product.Description}}</div>
+                    <div class="product-description">{{product.Key_Value}}</div>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                    <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.Menu_ID}}</span>
+                </div>
+                <div class="product-list-action">
+                    <span class="product-price">${{product.Key_ID}}</span>
+                    <p-button icon="pi pi-shopping-cart" label="Add to Cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                    <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.Key_ID}}</span>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-product pTemplate="gridItem">
+        <div class="p-col-12 p-md-4">
+            <div class="product-grid-item card" [ngStyle]="{'background-color':product.Color}">
+                <div class="product-grid-item-top" style="color: white">
+                    <div>
+                        <i class="pi pi-tag product-category-icon"></i>
+                        <span class="product-category">{{product.Menu_ID}}</span>
+                        <p-button icon="pi pi-shopping-cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                    </div>
+                    <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                </div>
+
+                <div class="product-grid-item-bottom" style="color: white">
+
+                    <span class="product-category"><i class="pi pi-tag product-category-icon"></i>{{product.Menu_ID}}</span>
+                    <span class="product-price">${{product.Key_ID}}</span>
+                    <p-button icon="pi pi-shopping-cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                </div>
+                <div class="product-grid-item-content" style="color: white">
+                    <img [src]="'../assets/items/' + product.ImagePath" [alt]="product.Description" />
+                    <div class="product-name">{{product.Description}}</div>
+                    <div class="product-descriptio4n">{{product.Key_Value}}</div>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                </div>
+                <div class="product-grid-item-bottom" style="color: white">
+
+                    <span class="product-category"><i class="pi pi-tag product-category-icon"></i>{{product.Menu_ID}}</span>
+                    <span class="product-price">${{product.Key_ID}}</span>
+                    <p-button icon="pi pi-shopping-cart" (click)="onSubMenuItem(product)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView> -->
+
+
+
+<!-- Pet Cash -->
+<p-dialog header="Pet Cash" [(visible)]="enablePetty" [modal]="true" [style]="{width: '93vw'}" [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+    <div class="p-fluid p-grid" style="margin-top: 1.5vh;">
+        <div class="p-field p-col-12 p-md-3"></div>
+        <div class="p-field p-col-12 p-md-6">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">£</span>
+                <input type="number" pInputText placeholder="Enter Cash Amount" [(ngModel)]="PetCash" autofocus="true" autocomplete="off">
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-3"></div>
+    </div>
+    <div class="p-fluid p-grid">
+        <span class="p-col-1 p-md-1"></span>
+        <span class="p-col-1 p-md-2">
+                <input pButton pRipple type="button" value="Cash Less" [disabled]="!PetCash" (click)="CashLess()" class="p-col-12 p-md-2 p-button-rounded p-button-danger mahh">
+            </span>
+        <span class="p-col-1 p-md-2">
+                <input pButton pRipple type="button" value="From Lottery" [disabled]="!PetCash" (click)="FromLottery()" class="p-col-2 p-button-rounded p-button-secondary mahh">
+            </span>
+        <span class="p-col-1 p-md-2">
+                <input pButton pRipple type="button" value="Vendor Less" [disabled]="!PetCash" (click)="VendorLess()" class="p-col-2 p-button-rounded p-button-success mahh" id="navToggle">
+            </span>
+        <span class="p-col-1 p-md-2">
+                <input pButton pRipple type="button" value="Other Sale Out" [disabled]="!PetCash" (click)="OtherOut()" class="p-col-2 p-button-rounded p-button-warning mahh">
+            </span>
+        <span class="p-col-1 p-md-2">
+                <input pButton pRipple type="button" value="For Bank" [disabled]="!PetCash" (click)="FromBank()" class="p-col-2 p-button-rounded p-button-rounded p-button-secondary mahh">
+            </span>
+
+
+        <span class="p-col-1 p-md-1"></span>
+        <span class="p-col-1 p-md-1"></span>
+
+
+        <span class="p-col-1 p-md-2">
+            <input pButton pRipple type="button" value="Emp Wage" [disabled]="!PetCash" (click)="EmployeeWages()" class="p-col-2 p-button-rounded p-button-rounded p-button-secondary mahh">
+        </span>
+        <span class="p-col-1 p-md-2">
+            <input pButton pRipple type="button" value="Paying Point" [disabled]="!PetCash" (click)="PayPoint()" class="p-col-2 p-button-rounded p-button-danger mahh">
+        </span>
+        <span class="p-col-1 p-md-2">
+            <input pButton pRipple type="button" value="Account Pay" [disabled]="!PetCash" (click)="AccPay()" class="p-col-2 p-button-rounded p-button-secondary mahh">
+        </span>
+        <span class="p-col-1 p-md-2">
+            <input pButton pRipple type="button" value="Pay Instance" [disabled]="!PetCash" (click)="PayInstance()" class="p-col-2 p-button-rounded p-button-success mahh" id="navToggle">
+        </span>
+        <span class="p-col-1 p-md-2">
+            <input pButton pRipple type="button" value="Cash Return" [disabled]="!PetCash" (click)="CashReturn()" class="p-col-2 p-button-rounded p-button-warning mahh">
+        </span>
+        <span class="p-col-1 p-md-1"></span>
+    </div>
+</p-dialog>
+
+
+
+<!-- Sales Mode -->
+
+<!-- For Sales Mode -->
+
+<p-dialog header={{SaleLabel}} [(visible)]="enableSalesHead" [modal]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+    <div class="p-fluid p-grid" style="margin-top: 1.5vh;">
+        <div class="p-field p-col-12 p-md-8">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">£</span>
+                <input type="number" pInputText placeholder="Enter Cash Amount" [(ngModel)]="PetCash" autofocus="true" autocomplete="off">
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <input pButton pRipple type="button" value={{SaleLabel}} [disabled]="!PetCash" (click)="AddPayInstanceSales()" class="p-col-2 p-button-rounded p-button-success mahh" id="navToggle">
+        </div>
+    </div>
+</p-dialog>
+
+
+
+<!-- Check Item Price -->
+<p-dialog header="Check Item Price" [(visible)]="enablePriceCheck" [modal]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <div class="p-fluid p-grid mah">
+        <div class="p-field p-col-9 p-md-9" style="margin-top: 2vh;">
+            <span class="p-float-label">
+                <input id="codeInput" pInputText [(ngModel)]="PriceDescription" type="text"
+                    (keyup.enter)="PriceCheckDes()" autofocus="true">
+                <label for="inputtext">Item Number</label>
+            </span>
+        </div>
+        <div class="p-field p-col-3 p-md-3" style="margin-top: auto;">
+            <span class="p-col-3 p-md-12">
+                <input pButton pRipple type="button" value="Check" [disabled]="!PriceDescription" (click)="PriceCheckDes()" class="p-col-12 p-button-rounded p-button-success" id="navToggle">
+            </span>
+        </div>
+        <div *ngIf="enablePriceAdd" style="font-family: monospace;font-size: larger;" class="p-field p-col-9 p-md-9">
+            {{PriceDes}}
+        </div>
+        <div *ngIf="enablePriceAdd" class="p-field p-col-3 p-md-3">
+            <span class="p-col-3 p-md-12">
+            <input pButton pRipple type="button" value="Add Item" (click)="onCheck()" class="p-col-2 p-button-rounded p-button-warning mahh">
+                </span>
+        </div>
+    </div>
+</p-dialog>
+
+
+
+
+<!-- Sales Discount -->
+
+<p-dialog header="Line Discount" [(visible)]="enableLineDiscount" [modal]="true" [baseZIndex]="10000">
+    <div class="p-field p-col pdialogChange">
+        <span class="p-float-label">
+        <p-inputNumber id="LineDiscontAmount" [(ngModel)]="LineDiscontAmount" mode="currency" currency="GBP" autofocus="true"></p-inputNumber>
+        <label for="LineDiscontAmount">Line Discont Amount</label>
+    </span>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Amount" class="p-button-text" [disabled]="!LineDiscontAmount" (click)="onDiscountAmount()"></button>
+        <button pButton pRipple label="Percentage" class="p-button-text" [disabled]="!LineDiscontAmount" (click)="onDiscountPercentage()"></button>
+    </ng-template>
+</p-dialog>
+
+
+
+<p-dialog header="Total Discount" [(visible)]="enableTotalDiscount" [modal]="true" [baseZIndex]="10000">
+    <div class="p-field p-col pdialogChange">
+        <span class="p-float-label">
+        <p-inputNumber id="TotalDiscontAmount" [(ngModel)]="TotalDiscontAmount" mode="currency" currency="GBP"></p-inputNumber>
+        <label for="TotalDiscontAmount">Total Discont Amount</label>
+    </span>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Amount" class="p-button-text" [disabled]="!TotalDiscontAmount" (click)="onDiscountTotalAmount()"></button>
+        <button pButton pRipple label="Percentage" class="p-button-text" [disabled]="!TotalDiscontAmount" (click)="onDiscountTotalPercentage()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Line 100% Discount" [(visible)]="enableCentDiscount" [modal]="true" [baseZIndex]="10000">
+    <div class="p-field p-col mah">
+        <span class="p-float-label">
+        <p-inputNumber id="CentDiscontAmount" [(ngModel)]="CentDiscontAmount" mode="currency" currency="GBP"></p-inputNumber>
+        <label for="CentDiscontAmount">100 % Discont Amount</label>
+    </span>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Amount" class="p-button-text" [disabled]="!CentDiscontAmount" (click)="onCentDiscountAmount()"></button>
+        <button pButton pRipple label="Percentage" class="p-button-text" [disabled]="!CentDiscontAmount" (click)="onCentDiscountPercentage()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="productDialog" header="Edit Item Details" [modal]="true" [baseZIndex]="10000" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <!-- <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.image" class="product-image" *ngIf="product.image"> -->
+        <div class="p-field">
+            <label for="Description">Description</label>
+            <input type="text" pInputText id="name" [(ngModel)]="SelectedRowItem.Description" [disabled]="true" />
+            <small class="p-error" *ngIf="submitted && !SelectedRowItem.Description">Description is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="inventoryStatus">Inventory Status</label>
+            <p-dropdown [(ngModel)]="SelectedRowItem.Inventory" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+                <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <!-- <div class="p-field">
+            <label for="description">Description</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="inventoryStatus">Inventory Status</label>
+            <p-dropdown [(ngModel)]="product.inventoryStatus" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+                <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="p-field">
+            <label class="p-mb-3">Category</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="category" value="Accessories" [(ngModel)]="product.category"></p-radioButton>
+                    <label for="category1">Accessories</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category2" name="category" value="Clothing" [(ngModel)]="product.category"></p-radioButton>
+                    <label for="category2">Clothing</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category3" name="category" value="Electronics" [(ngModel)]="product.category"></p-radioButton>
+                    <label for="category3">Electronics</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category4" name="category" value="Fitness" [(ngModel)]="product.category"></p-radioButton>
+                    <label for="category4">Fitness</label>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="p-formgrid p-grid">
+
+            <div class="p-field p-col">
+                <label for="Quantity">Quantity</label>
+                <p-inputNumber id="Quantity" [(ngModel)]="SelectedRowItem.Quantity" required autofocus="true"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="Price">Price</label>
+                <p-inputNumber id="Price" [(ngModel)]="SelectedRowItem.Price" mode="currency" currency="GBP" [disabled]="true"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="Discount">Discount</label>
+                <p-inputNumber id="Discount" [(ngModel)]="SelectedRowItem.Discount" mode="currency" currency="GBP" [disabled]="true"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="Amount">Amount</label>
+                <p-inputNumber id="Amount" [(ngModel)]="SelectedRowItem.Amount" mode="currency" currency="GBP" [disabled]="true"></p-inputNumber>
+            </div>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+
+<!-- //Funcky Function -->
+
+<!-- <script>
+    var mainNav = document.getElementById('mainNav');
+    var navToggle = document.getElementById('navToggle');
+    mainNav.classList.add('collapsed');
+
+    function mainNavToggle() {
+        mainNav.classList.toggle('collapsed');
+    }
+    navToggle.addEventListener('click', mainNavToggle);
+</script> -->
+
+<!-- <script src="../../app/home/renderer.js"></script> -->
+<!-- <script src="./renderer.js"></script> -->
+
+
+<script>
+    // let webContents = remote.getCurrentWebContents();
+    // const item = this.ItemData;
+    function printData() {
+        const electron = require('electron');
+        let {
+            remote
+        } = electron;
+        const {
+            PosPrinter
+        } = remote.require("electron-pos-printer");
+        let webContents = remote.getCurrentWebContents();
+        // const {
+        //     Home
+        // } = require('../app/home/home.component.ts');
+        // const {ipcRenderer}= require('electron');
+        // const items = Home.prototype.ItemData
+        // console.log(items);
+        const items = [{
+            "Trans_ID": 0,
+            "Staff_ID": 333,
+            "Number": 13248,
+            "VAT_Code": null,
+            "Description": "YELLOW PLANTAIN",
+            "Price": 1.99,
+            "Quantity": 1
+        }, {
+            "Trans_ID": 0,
+            "Staff_ID": 333,
+            "Number": 13248,
+            "VAT_Code": null,
+            "Description": "YELLOW PLANTAIN",
+            "Price": 1.99,
+            "Quantity": 1
+        }, {
+            "Trans_ID": 0,
+            "Staff_ID": 333,
+            "Number": 13248,
+            "VAT_Code": null,
+            "Description": "YELLOW PLANTAIN",
+            "Price": 1.99,
+            "Quantity": 1
+        }]
+
+        currentDate = []
+
+        function date() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            // todayTime = mm + '/' + dd + '/' + yyyy + '  ' + HH + MM;
+            console.log(today)
+                // console.log(todayTime)
+            currentDate.push(today);
+        }
+        date();
+        const itemsList = []
+        for (a in items) {
+            itemsList.push([items[a].Description, items[a].Quantity, items[a].Price]);
+        }
+        const itemsSubtotal = ['5.10', '3.21']
+        const ItemTable = {
+            type: 'table',
+            // style the table
+            style: 'text-align:left',
+            // list of the columns to be rendered in the table header
+            tableHeader: ['Item', 'Quantity', 'Price'],
+            // multi dimensional array depicting the rows and columns of the table body
+            tableBody: itemsList,
+            // custom style for the table header
+            tableHeaderStyle: 'visibility:collapse',
+            // custom style for the table body
+            tableBodyStyle: 'border: 0.5px solid #ddd',
+            css: {
+                "font-weight": "700",
+                "font-size": "12px",
+                "text-align": "center"
+            },
+            // custom style for the table footer
+            tableFooterStyle: 'background-color: #000; color: white;',
+        }
+        const data = [{
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'SPICE OF ASIA',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px",
+                    "color": "black"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: '54 JOHN STREET',
+                position: 'center',
+                style: `text-align:center`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'ABERDEEN AB25 1LL',
+                position: 'center',
+                style: `text-align:center`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: `TEL: 01224 645654`,
+                // value: `TEL - ${items[0].Number}`,
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: `OPEN:  MON-SAT  9AM-9PM _ SUN 10AM-8PM`,
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "13px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: '----------------------------------------------------------',
+                //position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            },
+            // Trans ID // staff id
+            {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: `TRANS ID - ${items[0].Trans_ID}`,
+                position: 'left',
+                style: `margin-left: 35px`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: `STAFF ID - ${items[0].Staff_ID}`,
+                //position: 'left',
+                style: `margin-left: 35px;`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: `${currentDate[0]}`,
+                //position: 'left',
+                css: {
+                    "font-size": "15px",
+                    "margin-left": "235px",
+                    "margin-top": "-19px",
+                    "margin-bottom": "6px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: '----------------------------------------------------------',
+                //position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            },
+            ItemTable, {
+
+                type: 'table',
+                // style the table
+                style: 'border: 1px solid #ddd',
+                // list of the columns to be rendered in the table header
+                tableHeader: ['SubTotal', 'Cash payment'],
+                // multi dimensional array depicting the rows and columns of the table body
+                tableBody: [itemsSubtotal],
+                css: {
+                    "font-weight": "700",
+                    "font-size": "18x"
+                },
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: '----------------------------------------------------------',
+                //position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+
+                type: 'text',
+                value: `* Number of Items ${items.length} *`,
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "18px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: '----------------------------------------------------------',
+                //position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'Thank you for your custom!',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "16px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'Please Come Again!',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "16px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'Please keep the receipt to retun the item',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "16px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'RETURN NOT ACCEPTED FOR VEG, CHILLED & FROZEN FOODS ITEMS',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            }, {
+                type: 'text', // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+                value: 'VAT  315061737',
+                position: 'center',
+                style: `text-align:center;`,
+                css: {
+                    "font-size": "15px"
+                }
+            },
+        ]
+
+
+        // let printers = webContents.getPrinters(); //list the printers
+        // console.log(printers);
+
+        // printers.map((item, index) => {
+        //     //write in the screen the printers for choose
+        //     document.getElementById("list_printers").innerHTML +=
+        //         ' <input type="radio" id="printer_' +
+        //         index +
+        //         '" name="printer" value="' +
+        //         item.name +
+        //         '"><label for="printer_' +
+        //         index +
+        //         '">' +
+        //         item.name +
+        //         "</label><br>";
+        // });
+
+        let printerName = 'EPSON TM-T82X Receipt';
+        const options = {
+            preview: true, // Preview in window or print
+            width: '320px', //  width of content body
+            //margin: '0 0 0 2px',
+            copies: 1, // Number of copies to print
+            printerName: printerName, // printerName: string, check it at webContent.getPrinters()
+            timeOutPerLine: 400,
+            silent: true,
+            //pageSize: { height: 301000, width: 71000 }  // page size
+        };
+
+        // const now = {
+        //   type: "text",
+        //   value: "" + date(),
+        //   style: `text-align:center;`,
+        //   css: { "font-size": "12px", "font-family": "sans-serif" },
+        // };
+
+        //const d = [...data, now];
+        PosPrinter.print(data, options)
+            .then(() => {})
+            .catch((error) => {
+                console.error(error);
+            });
+        // if (printerName && widthPage) {
+
+        // } else {
+        //   alert("Select the printer and the width");
+        // }
+    }
+</script>
